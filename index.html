@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="timerandscore">
+            <h2 id="timer">TIME LEFT: <span id="time">15</span> seconds</h2>
+            <h2 id="score">SCORE: <span id="marks">0</span></h2>
+        </div>
+
+        <div class="questionnumber">
+            <h2 id="number">Question 1</h2>
+        </div>
+
+        <div class="question" id="quiz">
+            <h2 id="question_conatiner">Question will appear here</h2>
+            <div id="option_container">
+                <!-- Options will be dynamically inserted here -->
+            </div>
+            <p id="display"></p>
+            <button onclick="nextQuestion()" id="click">SUBMIT</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
