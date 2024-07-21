@@ -21,17 +21,17 @@ const questions = [
     },
     {
         question: 'Which country is known as the Land of the Rising Sun?',
-        options: ['Japan', 'China', 'South Korea', 'Thailand'],
+        options: [ 'China', 'Japan','South Korea', 'Thailand'],
         answer: 'Japan'
     },
     {
         question: 'What is the largest mammal?',
-        options: ['Blue whale', 'Elephant', 'Giraffe', 'Hippo'],
+        options: [ 'Elephant', 'Giraffe', 'Blue whale','Hippo'],
         answer: 'Blue whale'
     },
     {
         question: 'Who painted the Mona Lisa?',
-        options: ['Leonardo da Vinci', 'Pablo Picasso', 'Vincent van Gogh', 'Michelangelo'],
+        options: [ 'Pablo Picasso', 'Leonardo da Vinci','Vincent van Gogh', 'Michelangelo'],
         answer: 'Leonardo da Vinci'
     },
     {
@@ -41,12 +41,12 @@ const questions = [
     },
     {
         question: 'What is the smallest planet in the solar system?',
-        options: ['Mercury', 'Mars', 'Pluto', 'Earth'],
+        options: ['Mars', 'Pluto', 'Earth','Mercury'],
         answer: 'Mercury'
     },
     {
         question: 'Which bird is known for its ability to mimic human speech?',
-        options: ['Parrot', 'Eagle', 'Owl', 'Penguin'],
+        options: ['Eagle','Parrot', 'Owl', 'Penguin'],
         answer: 'Parrot'
     }
 
