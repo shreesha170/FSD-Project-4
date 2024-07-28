@@ -46,8 +46,8 @@ const questions = [
     },
     {
         question: 'How do you include external CSS in an HTML document?',
-        options: ['<link rel=\'stylesheet\' href=\'style.css\'>', '<style src=\'style.css\'>', '<css link=\'style.css\'>', '<stylesheet href=\'style.css\'>'],
-        answer: '<link rel=\'stylesheet\' href=\'style.css\'>'
+        options: ['<link rel="stylesheet" href="style.css">', '<style src="style.css">', '<css link="style.css">', '<stylesheet href="style.css">'],
+        answer: '<link rel="stylesheet" href="style.css">'
     }
 ];
 
@@ -116,6 +116,7 @@ function startTimer() {
         document.getElementById('time').textContent = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timer);
+            alert('Your time for this question is out!');
             nextQuestion();
         }
     }, 1000);
