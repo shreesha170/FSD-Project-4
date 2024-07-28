@@ -116,7 +116,7 @@ function startTimer() {
         document.getElementById('time').textContent = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            alert('Your time for this question is out!');
+            alert('Time for this question is over!');
             nextQuestion();
         }
     }, 1000);
