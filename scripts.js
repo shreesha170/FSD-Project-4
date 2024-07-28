@@ -1,69 +1,63 @@
 const questions = [
     {
-        question: "What is the capital of France?",
-        options: ["Paris", "London", "Berlin", "Madrid"],
-        answer: "Paris"
+        question: 'What is the main purpose of ReactJS?',
+        options: ['To build UI components', 'To manage databases', 'To create backend services', 'To design user interfaces'],
+        answer: 'To build UI components'
     },
     {
-        question: "What is 2 + 2?",
-        options: ["3", "4", "5", "6"],
-        answer: "4"
+        question: 'Which method is used to update the state in a React component?',
+        options: ['setState', 'getState', 'updateState', 'changeState'],
+        answer: 'setState'
     },
     {
-        question: "What is the color of the sky?",
-        options: ["Red", "Blue", "Green", "Yellow"],
-        answer: "Blue"
+        question: 'What is JSX in React?',
+        options: ['A JavaScript syntax extension', 'A type of CSS', 'A database query language', 'A server-side scripting language'],
+        answer: 'A JavaScript syntax extension'
     },
     {
-        question: 'What is the chemical symbol for water?',
-        options: ['H2O', 'CO2', 'O2', 'NaCl'],
-        answer: 'H2O'
+        question: 'Which HTML tag is used to create a hyperlink?',
+        options: ['<a>', '<link>', '<href>', '<url>'],
+        answer: '<a>'
     },
     {
-        question: 'Which country is known as the Land of the Rising Sun?',
-        options: [ 'China', 'Japan','South Korea', 'Thailand'],
-        answer: 'Japan'
+        question: 'What does CSS stand for?',
+        options: ['Cascading Style Sheets', 'Creative Style Sheets', 'Colorful Style Sheets', 'Computer Style Sheets'],
+        answer: 'Cascading Style Sheets'
     },
     {
-        question: 'What is the largest mammal?',
-        options: [ 'Elephant', 'Giraffe', 'Blue whale','Hippo'],
-        answer: 'Blue whale'
+        question: 'Which property is used to change the background color in CSS?',
+        options: ['background-color', 'color', 'bg-color', 'background'],
+        answer: 'background-color'
     },
     {
-        question: 'Who painted the Mona Lisa?',
-        options: [ 'Pablo Picasso', 'Leonardo da Vinci','Vincent van Gogh', 'Michelangelo'],
-        answer: 'Leonardo da Vinci'
+        question: 'In HTML, which attribute is used to define inline styles?',
+        options: ['style', 'class', 'id', 'styles'],
+        answer: 'style'
     },
     {
-        question: 'What is the tallest mountain in the world?',
-        options: ['Mount Everest', 'K2', 'Kangchenjunga', 'Lhotse'],
-        answer: 'Mount Everest'
+        question: 'What is the use of the \'className\' attribute in React?',
+        options: ['To apply CSS classes to elements', 'To define JavaScript functions', 'To create HTML elements', 'To specify the component name'],
+        answer: 'To apply CSS classes to elements'
     },
     {
-        question: 'What is the smallest planet in the solar system?',
-        options: ['Mars', 'Pluto', 'Earth','Mercury'],
-        answer: 'Mercury'
+        question: 'Which HTML element is used to define the title of a document?',
+        options: ['<title>', '<head>', '<meta>', '<header>'],
+        answer: '<title>'
     },
     {
-        question: 'Which bird is known for its ability to mimic human speech?',
-        options: ['Eagle','Parrot', 'Owl', 'Penguin'],
-        answer: 'Parrot'
+        question: 'How do you include external CSS in an HTML document?',
+        options: ['<link rel=\'stylesheet\' href=\'style.css\'>', '<style src=\'style.css\'>', '<css link=\'style.css\'>', '<stylesheet href=\'style.css\'>'],
+        answer: '<link rel=\'stylesheet\' href=\'style.css\'>'
     }
-
 ];
 
 let currentQuestionIndex = 0;
 let score = 0;
+let timeLeft = 15;
 let timer;
-let timeLeft = 15; // 15 seconds per question
-
-function startQuiz() {
-    loadQuestion();
-    startTimer();
-}
 
 function loadQuestion() {
-    const questionElement = document.getElementById('question_conatiner');
+    const questionElement = document.getElementById('question_container');
     const optionsElement = document.getElementById('option_container');
     const numberElement = document.getElementById('number');
     
@@ -135,6 +129,14 @@ function resetTimer() {
 
 function displayEndScreen() {
     document.querySelector('.container').innerHTML = `<h2>Quiz Finished!</h2><p>Your final score: ${score}</p>`;
+}
+
+function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('marks').textContent = score;
+    loadQuestion();
+    startTimer();
 }
 
 document.addEventListener('DOMContentLoaded', startQuiz);
