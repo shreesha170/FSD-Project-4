@@ -1,3 +1,4 @@
+// Questions array
 const questions = [
     {
         question: 'What is the main purpose of ReactJS?',
@@ -55,6 +56,9 @@ let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 15;
 let timer;
+let loadingBar = document.getElementById('loadingBar');
+let loadingText = document.getElementById('loadingText');
+let loadingPercentage = 0;
 
 function loadQuestion() {
     const questionElement = document.getElementById('question_container');
@@ -86,18 +90,27 @@ function selectOption(selectedOption) {
     buttons.forEach(button => {
         button.disabled = true;
         if (button.textContent === correctAnswer) {
-            button.style.backgroundColor = '#d4f4d1'; // Green for correct answer
+            button.classList.add('correct'); // Add correct class
         } else if (button.textContent === selectedOption) {
-            button.style.backgroundColor = '#f4d1d1'; // Red for wrong answer
+            button.classList.add('incorrect'); // Add incorrect class
         }
     });
     
     if (selectedOption === correctAnswer) {
         score++;
         document.getElementById('marks').textContent = score;
+        updateLoadingBar(10); // Increase by 10% for correct answer
+    } else {
+        updateLoadingBar(-5); // Decrease by 5% for incorrect answer
     }
     
     document.getElementById('click').disabled = false; // Enable submit button
+}
+
+function updateLoadingBar(amount) {
+    loadingPercentage = Math.max(0, Math.min(100, loadingPercentage + amount));
+    loadingBar.style.width = loadingPercentage + '%';
+    loadingText.textContent = loadingPercentage + '%';
 }
 
 function nextQuestion() {
@@ -129,15 +142,39 @@ function resetTimer() {
 }
 
 function displayEndScreen() {
-    document.querySelector('.container').innerHTML = `<h2>Quiz Finished!</h2><p>Your final score: ${score}</p>`;
+    document.querySelector('.container').style.display = 'none';
+    const endScreen = document.querySelector('.end-screen');
+    document.getElementById('finalScore').textContent = score;
+    endScreen.style.display = 'block'; // Show the end screen
+}
+
+function restartQuiz() {
+    document.querySelector('.end-screen').style.display = 'none'; // Hide end screen
+    document.querySelector('.welcome-container').style.display = 'none'; // Hide welcome screen
+    document.querySelector('.container').style.display = 'block'; // Show quiz container
+    currentQuestionIndex = 0;
+    score = 0;
+    loadingPercentage = 0; // Reset loading bar
+    loadingBar.style.width = '0%'; // Ensure loading bar starts at 0%
+    document.getElementById('marks').textContent = score;
+    loadQuestion();
+    resetTimer();
 }
 
 function startQuiz() {
+    document.querySelector('.welcome-container').style.display = 'none'; // Hide welcome screen
+    document.querySelector('.container').style.display = 'block'; // Show quiz container
     currentQuestionIndex = 0;
     score = 0;
+    loadingPercentage = 0; // Reset loading bar
+    loadingBar.style.width = '0%'; // Ensure loading bar starts at 0%
     document.getElementById('marks').textContent = score;
     loadQuestion();
-    startTimer();
+    resetTimer();
 }
 
-document.addEventListener('DOMContentLoaded', startQuiz);
+// Add event listener for the Play Again button
+document.getElementById('playAgain').addEventListener('click', restartQuiz);
+
+// Add event listener for the Start Quiz button
+document.querySelector('.start-button').addEventListener('click', startQuiz);

@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="welcome-container">
+        <div class="welcome-message">Welcome to the Quiz!</div>
+        <button class="start-button">Start Quiz</button>
+    </div>
+
     <div class="container">
         <div class="timerandscore">
             <h2 id="timer">TIME LEFT: <span id="time">15</span> seconds</h2>
@@ -22,10 +27,20 @@
             <div id="option_container">
                 <!-- Options will be inserted here -->
             </div>
-            <p id="display"></p>
             <button id="click" onclick="nextQuestion()">SUBMIT</button>
             <div id="result"></div>
         </div>
+
+        <div class="loading-container">
+            <div class="loading-bar" id="loadingBar"></div>
+            <div class="loading-text" id="loadingText">0%</div>
+        </div>
+    </div>
+
+    <div class="end-screen" style="display: none;">
+        <h2>Quiz Finished!</h2>
+        <p>Your final score: <span id="finalScore"></span></p>
+        <button id="playAgain">Play Again</button>
     </div>
 
     <script src="scripts.js"></script>
